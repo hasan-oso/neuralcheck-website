@@ -1,0 +1,635 @@
+{
+  "scanId": "b45c8cf6-e376-4765-8703-f68e9bc69844",
+  "shortId": "NC-58QUJP",
+  "deviceModel": "Unknown",
+  "deviceMarketingName": "Unknown",
+  "date": {
+    "__marker": "FIRESTORE_SERVER_TIMESTAMP"
+  },
+  "language": "ar",
+  "isFreeTrial": false,
+  "verified": true,
+  "aiResponse": {
+    "pipeline": "v7_findings_based",
+    "language": "ar",
+    "letter": "C",
+    "letterSource": "GATE:ROOT_DETECTED",
+    "coverage": 0.4587142857142857,
+    "coveragePct": 45.9,
+    "partialAssessment": true,
+    "partialAssessmentTag": {
+      "label": "تقييم جزئي",
+      "coveragePct": 45.9,
+      "text": "تقييم جزئي — تغطية 45.9%"
+    },
+    "governingGateReason": {
+      "name": "ROOT_DETECTED",
+      "ceilingLetter": "C",
+      "source": "SEC-04=fail",
+      "text": "أعلى حرف C: صلاحيات الجذر (الروت) مكتشَفة على الجهاز."
+    },
+    "noDataAtAll": false,
+    "zeroMeasuredMessage": null,
+    "abstentionReasons": null,
+    "harnessError": false,
+    "harnessErrorReason": null,
+    "harnessErrorMessage": null,
+    "categories": {
+      "battery": {
+        "state": "PARTIAL",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": "NO_CALIBRATED_THRESHOLD (PLAN-03 لم يُنجَز — انظر batteryLayer.js)",
+        "letterCeilingReason": null,
+        "testIds": [],
+        "confidence": null,
+        "tag": "ESTIMATED",
+        "indicators": {
+          "BAT-THERMAL-EFF": {
+            "id": "BAT-THERMAL-EFF",
+            "status": "MEASURED",
+            "verdict": "THRESHOLD_NOT_CALIBRATED",
+            "value": 13.382747353140436,
+            "unit": "°C/Wh",
+            "deltaTC": 6.899999999999999,
+            "energyWh": 0.5155891998798605,
+            "gate": {
+              "cadenceWhole": 11,
+              "required": 5,
+              "passes": true
+            },
+            "comparedToModelBaseline": false,
+            "note": "مقارنة الطراز غير مفعّلة — modelBaselines فارغة (§٤-ج)",
+            "socAtWindowStart": 48,
+            "socAtWindowEnd": 43
+          },
+          "BAT-R-APPARENT": {
+            "id": "BAT-R-APPARENT",
+            "status": "MEASURED",
+            "verdict": "THRESHOLD_NOT_CALIBRATED",
+            "value": 132.7949507222513,
+            "unit": "mΩ",
+            "vFirst10sMv": 3760,
+            "vUnderLoadMv": 3535.355421686747,
+            "iUnderLoadUa": 1691665.060240964,
+            "gate": {
+              "nSamples": 830,
+              "sourceCadenceUpdates": 6,
+              "required": 5,
+              "passes": true
+            },
+            "unitCaveat": "وحدة التيار المُعلَنة تحمل غموض مضاعف موثَّق (A39) — الرقم المطلق غير موثوق بمعزل عن حسمه",
+            "socAtWindowStart": 48,
+            "socAtWindowEnd": 44
+          },
+          "BAT-FCC": {
+            "id": "BAT-FCC",
+            "status": "MEASURED",
+            "verdict": "THRESHOLD_NOT_CALIBRATED",
+            "value": 3778.2928472222225,
+            "unit": "mAh",
+            "intervalCount": 3,
+            "gate": {
+              "intervalCount": 3,
+              "required": 2,
+              "passes": true
+            },
+            "designCapacityMah": 4400,
+            "ratioToDesign": 0.8587029198232323,
+            "socAtWindowStart": 47,
+            "socAtWindowEnd": 44
+          },
+          "BAT-COULOMB": {
+            "id": "BAT-COULOMB",
+            "status": "MEASURED",
+            "verdict": "THRESHOLD_NOT_CALIBRATED",
+            "value": 143.84349777777777,
+            "unit": "mAh",
+            "gate": {
+              "qIntMah": 143.84349777777777,
+              "required": 80,
+              "passes": true
+            },
+            "consistencyGateNote": "بوّابة الاتّساق المنصوصة (k = ΔCC ÷ ∫I) تحتاج charge_counter (fv68) وغير قابلة للتقييم على fv67 — لم تُستبدَل بتخمين؛ الحقل consistencyK يبقى null.",
+            "consistencyK": null,
+            "socAtWindowStart": 48,
+            "socAtWindowEnd": 43
+          }
+        },
+        "socAtStart": 48,
+        "socAtEnd": 43
+      },
+      "thermal": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "T-01",
+          "T-02",
+          "T-03",
+          "T-04"
+        ]
+      },
+      "cpu": {
+        "state": "MEASURED",
+        "letter": "A",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": null,
+        "testIds": [
+          "C-01",
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "C-06",
+          "C-07"
+        ]
+      },
+      "gpu": {
+        "state": "PARTIAL",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0.4,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "تغطية منخفضة — اختباران من خمسة، وأعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "G-01",
+          "G-02",
+          "G-03",
+          "G-04",
+          "G-05"
+        ]
+      },
+      "display": {
+        "state": "MEASURED",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "ثلاثة اختبارات من ثلاثة — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "D-01",
+          "D-02",
+          "D-03"
+        ]
+      },
+      "memory": {
+        "state": "MEASURED",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "اختبار واحد من واحد — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "R-01",
+          "R-02",
+          "R-03"
+        ]
+      },
+      "storage": {
+        "state": "MEASURED",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "اختباران من اثنين — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "S-01",
+          "S-02",
+          "S-03",
+          "S-04",
+          "S-05",
+          "S-06"
+        ]
+      },
+      "camera": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "CM-01",
+          "CM-02",
+          "CM-03",
+          "CM-04",
+          "CM-05",
+          "CM-06",
+          "CM-07",
+          "CM-08",
+          "CM-10",
+          "CM-11"
+        ]
+      },
+      "gps": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "L-01",
+          "L-02",
+          "L-03"
+        ]
+      },
+      "security": {
+        "state": "MEASURED",
+        "letter": "D",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": null,
+        "testIds": [
+          "SEC-01",
+          "SEC-02",
+          "SEC-03",
+          "SEC-04",
+          "SEC-05",
+          "SEC-06",
+          "SEC-07",
+          "SEC-08",
+          "SEC-09",
+          "SEC-10",
+          "SEC-11"
+        ]
+      },
+      "sensors": {
+        "state": "PARTIAL",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0.75,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "تسعة اختبارات من اثني عشر — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "SN-01",
+          "SN-02",
+          "SN-03",
+          "SN-04",
+          "SN-05",
+          "SN-06",
+          "SN-07",
+          "SN-08",
+          "SN-09",
+          "SN-10",
+          "SN-11",
+          "SN-12"
+        ]
+      },
+      "cellular": {
+        "state": "PARTIAL",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0.7142857142857143,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "خمسة اختبارات من سبعة — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "N-01",
+          "N-02",
+          "N-03",
+          "N-04",
+          "N-05",
+          "N-06",
+          "N-07"
+        ]
+      },
+      "wireless": {
+        "state": "MEASURED",
+        "letter": "B",
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 1,
+        "reason": null,
+        "letterCeilingReason": {
+          "name": "LOW_CATEGORY_COVERAGE",
+          "ceilingLetter": "B",
+          "text": "ستة اختبارات من ستة — أعلى حرف لهذه الفئة B في هذا الإصدار: اختباراتها تتأكّد من وجود المكوّنات وعملها، ولا تقيس أداءها بعد."
+        },
+        "testIds": [
+          "N-08",
+          "N-09",
+          "N-10",
+          "N-11",
+          "N-12",
+          "N-13"
+        ]
+      },
+      "audio": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "NO_HEALTH_BEARING_TESTS_DECLARED",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "input": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "NO_HEALTH_BEARING_TESTS_DECLARED",
+        "letterCeilingReason": null,
+        "testIds": []
+      }
+    },
+    "issues": [
+      {
+        "id": "DISC-T-03",
+        "category": "thermal",
+        "severity": "INFO",
+        "title": "غير مقيس — الحرارة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "معدّل التبريد غير مقيس: لا تتوفر قراءات حرارية على هذا الجهاز."
+      },
+      {
+        "id": "POS-cpu",
+        "category": "cpu",
+        "severity": "POSITIVE",
+        "title": "لا أعطاب — المعالج",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "لا أعطاب في اختبارات المعالج المنفَّذة: خمسة اختبارات نجحت، واختبارات القياس الخام موسومة غير مستقرّة ولا تدخل التقييم."
+      },
+      {
+        "id": "DISC-G-03",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "نسبة هبوط الإطارات في الرسوميات غير مقيسة — الاختبار لم يُنفَّذ على هذا الجهاز."
+      },
+      {
+        "id": "DISC-G-04",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "قياس خفض تردّد معالج الرسوميات غير مقيس — الاختبار لم يُنفَّذ على هذا الجهاز."
+      },
+      {
+        "id": "DISC-G-05",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "قياس أدنى معدّل إطارات غير مقيس — الاختبار لم يُنفَّذ على هذا الجهاز."
+      },
+      {
+        "id": "POS-display",
+        "category": "display",
+        "severity": "POSITIVE",
+        "title": "لا أعطاب — الشاشة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "لا أعطاب في اختبارات الشاشة الثلاثة المنفَّذة."
+      },
+      {
+        "id": "POS-memory",
+        "category": "memory",
+        "severity": "POSITIVE",
+        "title": "لا أعطاب — الذاكرة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "لا أعطاب في اختبارات الذاكرة الثلاثة المنفَّذة."
+      },
+      {
+        "id": "POS-storage",
+        "category": "storage",
+        "severity": "POSITIVE",
+        "title": "لا أعطاب — التخزين",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "لا أعطاب في اختبارات التخزين الأربعة المنفَّذة."
+      },
+      {
+        "id": "DISC-CM-01",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "الكاميرا الخلفية لم تُفحص: إذن الكاميرا مرفوض، فالحالة غير مقيَّمة."
+      },
+      {
+        "id": "DISC-CM-02",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "الكاميرا الأمامية لم تُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-03",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "التركيز التلقائي لم يُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-04",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "الفلاش لم يُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-05",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "تصوير الفيديو لم يُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-06",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "دقّة الكاميرا الخلفية لم تُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-07",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "دقّة الكاميرا الأمامية لم تُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-CM-10",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "التعرّف على الوجه لم يُفحص: إذن الكاميرا مرفوض."
+      },
+      {
+        "id": "DISC-L-02",
+        "category": "gps",
+        "severity": "INFO",
+        "title": "غير مقيس — الموقع (GPS)",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "عدد الأقمار الصناعية لم يُقَس: إذن الموقع مرفوض."
+      },
+      {
+        "id": "DISC-L-03",
+        "category": "gps",
+        "severity": "INFO",
+        "title": "غير مقيس — الموقع (GPS)",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "دقّة تحديد الموقع لم تُقَس: إذن الموقع مرفوض."
+      },
+      {
+        "id": "ISS-SEC-04",
+        "category": "security",
+        "severity": "FAIL",
+        "title": "فشل — الأمان",
+        "evidence": "مكتشف",
+        "evidenceUnit": null,
+        "description": "عطب: صلاحيات الروت مكتشفة على الجهاز (فشل). هذا الفشل وحده هو ما أنزل سقف الحرف العام إلى C، وأنزل فئة الأمان إلى أرضية فشل اختبار حالة — وجود صلاحيات جذر يعني نظاماً قابلاً للتعديل من خارج مسار التحديث الرسمي."
+      },
+      {
+        "id": "DISC-SN-07",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "مستشعر حرارة المحيط غير متوفر على هذا الجهاز — لم يُقَس."
+      },
+      {
+        "id": "DISC-SN-08",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "مستشعر اكتشاف الخطوات غير متوفر — لم يُقَس."
+      },
+      {
+        "id": "DISC-SN-09",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "عدّاد الخطوات غير متوفر — لم يُقَس."
+      },
+      {
+        "id": "DISC-N-03",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "المنفذ الثاني للشريحة غير موجود أصلاً (منفذ واحد فقط)، فلا يوجد ما يُقاس."
+      },
+      {
+        "id": "DISC-N-04",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "نوع الشبكة لم يُقَس: إذن قراءة حالة الهاتف مرفوض."
+      },
+      {
+        "id": "POS-wireless",
+        "category": "wireless",
+        "severity": "POSITIVE",
+        "title": "لا أعطاب — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": "لا أعطاب في اختبارات الاتصال اللاسلكي الستة المنفَّذة."
+      }
+    ],
+    "narrative": {
+      "summary": "الفحص أنجز قياساته الأساسية بنجاح: المعالج والذاكرة والشاشة والتخزين والاتصال اللاسلكي والمستشعرات بلا أعطاب على ما نُفِّذ منها، وحروفها بين A و B. لكن التقرير جزئي بتغطية 46%، لأن الكاميرا حُجبت بأذونات مرفوضة، والإدارة الحرارية بلا أي اختبار منفَّذ، والصوت والإدخال بلا اختبارات معلنة. الحرف العام C، ومصدره فئة الأمان: صلاحيات الروت مكتشفة على الجهاز، مع تفعيل وضع المطوّر والتصحيح عبر الكابل، ورقعة أمان من 2021-08-01.",
+      "buyerAdvice": {
+        "casual": "الجهاز ينجز المهام اليومية بلا عطب ظاهر في المعالج والذاكرة والتخزين والشاشة والاتصال، لكن هناك نقاط قبل الدفع: صلاحيات الروت مكتشفة عليه، ووضع المطوّر والتصحيح عبر الكابل مفعّلان، ورقعة الأمان قديمة (2021-08-01). اطلب من البائع إعادة الجهاز إلى حالته الأصلية بنظام غير معدّل، أو خصماً في السعر يقابل هذه المخاطرة. وتذكّر أن التغطية 46% فقط، وأن الكاميرا لم تُفحص أصلاً، فجرّبها بنفسك.",
+        "gamer": "الأداء المستدام هو ما يهمّك، والصورة مختلطة: المعالج نجح في اختباراته مع كبح حراري 9.1%، لكن أقصى تردّد داخل نافذة القياس في الحمل المطوّل لم يبقَ قريباً من الذروة، وأداء الرسوميات في الطور الخامس هبط عن مستواه في الطور الرابع، مع أن اختبارات الأداء الرسومي الثلاثة (هبوط الإطارات وأدنى إطار) غير مقيسة كلياً. حرارة البطارية ارتفعت أثناء الحمل، ومعدّل تحديث الشاشة 60 فقط. إن كنت تلعب ألعاباً ثقيلة فأداء الإطارات الفعلي غير موثَّق في هذا الفحص.",
+        "photographer": "الكاميرا كلها غير مقيسة — الخلفية والأمامية والتركيز والفلاش وتصوير الفيديو — لأن إذن الكاميرا كان مرفوضاً، فلا يمكن الحكم على جودة التصوير من هذا الفحص. من جهة المساحة، سعة التخزين 228.6 والمساحة المتاحة مقيسة، وسرعة الكتابة المقيسة 188 MB/s. اطلب إعادة فحص مع منح إذن الكاميرا، وتأكد من المساحة الحرة قبل الشراء."
+      }
+    },
+    "narrativeIncomplete": false,
+    "narrativeIncompleteFields": []
+  }
+}

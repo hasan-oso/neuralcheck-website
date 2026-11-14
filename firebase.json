@@ -1,0 +1,32 @@
+{
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "predeploy": [
+      "npm run deploy:guard:pre",
+      "npm run build",
+      "npm run deploy:guard:post"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": true,
+    "rewrites": [
+      { "source": "/shop/**", "destination": "/shop/_/index.html" },
+      { "source": "/print/**", "destination": "/print/_/index.html" },
+      { "source": "**", "destination": "/index.html" }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(apk)",
+        "headers": [
+          { "key": "Cache-Control", "value": "no-cache" }
+        ]
+      },
+      {
+        "source": "**/*.@(js|css|svg|png|jpg|jpeg|webp|woff2)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      }
+    ]
+  }
+}

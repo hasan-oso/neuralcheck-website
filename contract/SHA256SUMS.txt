@@ -1,0 +1,6 @@
+1382a97ba93923014c66b5fa6c6a0a9cde5427e826acc62666e27ac7cfa6bca7 *v7-reports-document-sample-cpu-c06-downgrade.json
+2ff7c3c8abcfb09600e48fb97cc3c91e5179dd033fcf6edad828c68b02d15c06 *v7-reports-document-sample-honor.json
+9291df36b1473af98c6ea977c8071d356331cda0c7f7d59f311ad5c6b6e8fd8f *v7-reports-document-sample-security-downgrade.json
+e9d505ef56f72e0b892cd192586e9d76c5f9dfe8c37d8f036e1787c6a34735cb *v7-reports-document-sample-zero-measured-battery-harness-error.json
+f1c1502152e8c5771eceac9e4bd2af291bee7688e49724c7be7c7ef97faa80fa *v7-reports-document-sample-zero-measured.json
+7868c2968a793701e2462188a1f4cbed5a110c17dc4a523e81d80e5f4cc4c1a6 *v7-reports-document-sample.json

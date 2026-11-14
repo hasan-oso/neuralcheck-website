@@ -1,0 +1,17 @@
+{
+  "name": "NeuralCheck",
+  "short_name": "NeuralCheck",
+  "description": "AI-powered smartphone diagnostic. Check any phone before you buy with 100+ tests in 8 minutes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E1A",
+  "theme_color": "#0A0E1A",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

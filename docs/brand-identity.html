@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuralCheck — الهوية البصرية</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap');
+
+  :root{
+    --bg:#0A0E1A; --card:#111827; --surface:#1A2235;
+    --green:#4ADE80; --cyan:#38BDF8; --neon:#22D3EE; --glow:#A3E635;
+    --t1:#F1F5F9; --t2:#94A3B8; --t3:#64748B;
+    --ga:#22C55E; --gb:#3B82F6; --gc:#F59E0B; --gd:#EF4444;
+    --border:rgba(255,255,255,.06);
+    --grad:linear-gradient(135deg,#4ADE80 0%,#22D3EE 100%);
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--bg);color:var(--t1);
+    font-family:'Tajawal','Outfit',ui-sans-serif,system-ui,sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .glow{box-shadow:0 0 40px rgba(74,222,128,.15),0 0 80px rgba(34,211,238,.08)}
+  code,.mono{font-family:var(--mono);direction:ltr;unicode-bidi:isolate}
+  h1,h2,h3{font-family:'Outfit','Tajawal',sans-serif;line-height:1.2;letter-spacing:-.01em}
+  section{margin-top:56px}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);font-family:var(--mono)}
+  h2.title{font-size:28px;font-weight:800;margin:6px 0 4px}
+  .lead{color:var(--t2);max-width:70ch;margin:0 0 22px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px}
+  .grid{display:grid;gap:16px}
+  .divider{height:1px;background:var(--border);margin:0}
+  /* cover */
+  .cover{display:flex;gap:28px;align-items:center;flex-wrap:wrap;border:1px solid var(--border);border-radius:28px;
+    padding:36px;background:radial-gradient(120% 140% at 80% 0%,rgba(34,211,238,.10),transparent 50%),
+                          radial-gradient(120% 140% at 0% 100%,rgba(74,222,128,.10),transparent 50%),var(--card)}
+  .cover svg{width:120px;height:120px;filter:drop-shadow(0 0 24px rgba(74,222,128,.35))}
+  .wordmark{font-family:'Outfit',sans-serif;font-weight:900;font-size:46px;letter-spacing:-.02em}
+  /* swatches */
+  .swatches{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .sw{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .sw .chip{height:76px}
+  .sw .meta{padding:10px 12px}
+  .sw .nm{font-size:13px;font-weight:600}
+  .sw .hx{font-size:12px;color:var(--t2)}
+  .gradbar{height:84px;border-radius:16px;background:var(--grad)}
+  /* type */
+  .type-outfit{font-family:'Outfit',sans-serif}
+  .type-tajawal{font-family:'Tajawal',sans-serif}
+  .wlist span{display:inline-block;margin-inline-end:14px;color:var(--t2);font-size:14px}
+  /* pills / buttons */
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 22px;font-weight:600;text-decoration:none}
+  .btn-grad{background:var(--grad);color:var(--bg)}
+  .btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--t1)}
+  .badge{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;
+    font-family:'Outfit';font-weight:900;font-size:28px;color:#fff;box-shadow:0 0 30px rgba(0,0,0,.3)}
+  /* lists */
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:8px 0;border-bottom:1px solid var(--border);color:var(--t2)}
+  ul.clean li b{color:var(--t1)}
+  .two{grid-template-columns:1fr 1fr}
+  .do{border-inline-start:3px solid var(--green)}
+  .dont{border-inline-start:3px solid var(--gd)}
+  .kv{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--border)}
+  .kv .k{color:var(--t2)}
+  .tag{display:inline-block;background:var(--surface);border:1px solid var(--border);border-radius:999px;
+    padding:4px 12px;font-size:13px;color:var(--t2);margin:0 0 6px}
+  .note{font-size:13px;color:var(--t3);margin-top:10px}
+  @media(max-width:680px){.two{grid-template-columns:1fr}.wordmark{font-size:34px}}
+
+  /* ---------- Light variant (brand guide only — the website stays dark) ---------- */
+  .lightwrap{background:#F8FAFC;color:#0F172A;border:1px solid #E2E8F0;border-radius:24px;padding:26px}
+  .lightwrap .l-sub{color:#475569}
+  .lightwrap .l-card{background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+  .lightwrap .l-grad-text{background:linear-gradient(135deg,#15803D 0%,#0E7490 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lightwrap .l-gradbar{height:72px;border-radius:14px;background:linear-gradient(135deg,#16A34A 0%,#0891B2 100%)}
+  .lightwrap .l-btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 20px;font-weight:700;text-decoration:none}
+  .lightwrap .l-btn-grad{background:linear-gradient(135deg,#16A34A,#0891B2);color:#fff;box-shadow:0 8px 20px rgba(8,145,178,.25)}
+  .lightwrap .l-btn-ghost{background:#fff;border:1px solid #CBD5E1;color:#0F172A}
+  .lightwrap .l-sw{border:1px solid #E2E8F0;border-radius:12px;overflow:hidden;background:#fff}
+  .lightwrap .l-sw .chip{height:64px}
+  .lightwrap .l-sw .meta{padding:8px 10px}
+  .lightwrap .l-sw .nm{font-size:13px;font-weight:600;color:#0F172A}
+  .lightwrap .l-sw .hx{font-size:12px;color:#64748B}
+  .lightwrap .l-badge{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;font-family:'Outfit';font-weight:900;font-size:24px;color:#fff;box-shadow:0 6px 16px rgba(15,23,42,.12)}
+  .lightwrap ul.clean li{border-bottom:1px solid #E2E8F0;color:#475569}
+  .lightwrap ul.clean li b{color:#0F172A}
+  .lightwrap code{color:#0F172A;background:#F1F5F9;border-radius:5px;padding:1px 5px}
+  .lightwrap .l-do{border-inline-start:3px solid #16A34A}
+  .lightwrap .l-dont{border-inline-start:3px solid #DC2626}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- COVER -->
+  <div class="cover">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NeuralCheck logo">
+      <defs>
+        <linearGradient id="phoneGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#38bdf8" stop-opacity=".9"/><stop offset="100%" stop-color="#22d3ee" stop-opacity=".7"/></linearGradient>
+        <linearGradient id="neuronGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#22d3ee"/><stop offset="50%" stop-color="#4ade80"/><stop offset="100%" stop-color="#a3e635"/></linearGradient><linearGradient id="neuronLine" gradientUnits="userSpaceOnUse" x1="52" y1="52" x2="148" y2="148"><stop offset="0%" stop-color="#22d3ee"/><stop offset="50%" stop-color="#4ade80"/><stop offset="100%" stop-color="#a3e635"/></linearGradient>
+        <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a3e635"/><stop offset="40%" stop-color="#4ade80" stop-opacity=".8"/><stop offset="100%" stop-color="#22c55e" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect x="52" y="28" width="96" height="144" rx="16" fill="none" stroke="url(#phoneGrad)" stroke-width="2.5" opacity=".85"/>
+      <rect x="82" y="32" width="36" height="4" rx="2" fill="url(#phoneGrad)" opacity=".5"/>
+      <g stroke="url(#neuronLine)" stroke-width="2" stroke-linecap="round" opacity=".9">
+        <line x1="100" y1="100" x2="100" y2="52"/><line x1="100" y1="100" x2="142" y2="62"/><line x1="100" y1="100" x2="148" y2="100"/><line x1="100" y1="100" x2="142" y2="138"/><line x1="100" y1="100" x2="100" y2="152"/><line x1="100" y1="100" x2="58" y2="138"/><line x1="100" y1="100" x2="52" y2="100"/><line x1="100" y1="100" x2="58" y2="62"/>
+      </g>
+      <g fill="url(#neuronGrad)"><circle cx="100" cy="52" r="5"/><circle cx="142" cy="62" r="5"/><circle cx="148" cy="100" r="5"/><circle cx="142" cy="138" r="5"/><circle cx="100" cy="152" r="4.5"/><circle cx="58" cy="138" r="5"/><circle cx="52" cy="100" r="5"/><circle cx="58" cy="62" r="5"/></g>
+      <circle cx="100" cy="100" r="20" fill="url(#coreGlow)"/><circle cx="100" cy="100" r="9" fill="#a3e635" opacity=".9"/><circle cx="100" cy="100" r="4" fill="#fff" opacity=".7"/>
+    </svg>
+    <div>
+      <div class="eyebrow">دليل الهوية البصرية · Brand Identity</div>
+      <div class="wordmark"><span class="grad">NeuralCheck</span></div>
+      <div style="color:var(--t2);font-size:18px;margin-top:6px">افحص أي هاتف قبل الشراء — فحص ذكي بالذكاء الاصطناعي، ثقة كاملة في كل تقرير.</div>
+      <div style="margin-top:14px">
+        <span class="tag">neuralcheck.net</span>
+        <span class="tag">Android · APK</span>
+        <span class="tag">ar · tr · en</span>
+        <span class="tag" dir="ltr">theme #0A0E1A</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">ملف مرجعي لإنشاء التصاميم الإعلانية. كل القيم مستخرجة من الموقع الفعلي. افتحه في المتصفّح لرؤية الخطوط الحقيقية (Outfit / Tajawal).</p>
+
+  <!-- LOGO -->
+  <section>
+    <div class="eyebrow">01 — الشعار</div>
+    <h2 class="title">الشعار <span class="grad">Logo</span></h2>
+    <p class="lead">الرمز يدمج <b>هاتفاً</b> (إطار سماوي) مع <b>شبكة عصبية</b> من 8 عُقد تتمحور حول <b>نواة متوهّجة</b> — أي «ذكاء اصطناعي يفحص الهاتف». لا تُعِد رسمه؛ استخدم ملف <code>logo.svg</code> الأصلي.</p>
+    <div class="grid two">
+      <div class="card">
+        <h3 style="margin:0 0 12px;font-size:16px">الاستخدام الصحيح ✓</h3>
+        <ul class="clean">
+          <li>استخدم الـ <b>SVG</b> الأصلي قابلاً للتحجيم (المتجر/الموقع/الإعلان).</li>
+          <li>على خلفية <b>داكنة</b> (الأساس). الحدّ الأدنى للحجم: <b>32px</b>.</li>
+          <li>الشعار + الاسم <b>NeuralCheck</b> بخط Outfit الأسود بتدرّج العلامة.</li>
+          <li>اترك مساحة فارغة حوله ≥ <b>نصف ارتفاع الرمز</b>.</li>
+        </ul>
+      </div>
+      <div class="card dont">
+        <h3 style="margin:0 0 12px;font-size:16px">تجنّب ✕</h3>
+        <ul class="clean">
+          <li>لا تُغيّر ألوان التدرّج أو تستبدلها بألوان خارج اللوحة.</li>
+          <li>لا تضعه على خلفية مزحومة دون هالة/إطار يفصله.</li>
+          <li>لا تَمطّه أو تُدوّره أو تُضِف ظلالاً ثقيلة.</li>
+          <li>لا تكتب الاسم <b>Neural Check</b> منفصلاً — كلمة واحدة <b>NeuralCheck</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section>
+    <div class="eyebrow">02 — الألوان</div>
+    <h2 class="title">لوحة <span class="grad">الألوان</span></h2>
+    <p class="lead">علامة داكنة (Dark-first). الخلفيات الثلاث تبني العمق، والأخضر→السماوي هما لون البطل. استخدم النيون/الليموني للتوهّج فقط، لا للمساحات الكبيرة.</p>
+
+    <h3 style="font-size:15px;color:var(--t2)">الخلفيات</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#0A0E1A"></div><div class="meta"><div class="nm">nc-bg</div><div class="hx" dir="ltr">#0A0E1A · الخلفية الأساس</div></div></div>
+      <div class="sw"><div class="chip" style="background:#111827"></div><div class="meta"><div class="nm">nc-card</div><div class="hx" dir="ltr">#111827 · البطاقات</div></div></div>
+      <div class="sw"><div class="chip" style="background:#1A2235"></div><div class="meta"><div class="nm">nc-surface</div><div class="hx" dir="ltr">#1A2235 · الأسطح</div></div></div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--t2);margin-top:22px">ألوان العلامة (Accents)</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#4ADE80"></div><div class="meta"><div class="nm">nc-green</div><div class="hx" dir="ltr">#4ADE80 · أساسي</div></div></div>
+      <div class="sw"><div class="chip" style="background:#38BDF8"></div><div class="meta"><div class="nm">nc-cyan</div><div class="hx" dir="ltr">#38BDF8 · أساسي</div></div></div>
+      <div class="sw"><div class="chip" style="background:#22D3EE"></div><div class="meta"><div class="nm">nc-neon</div><div class="hx" dir="ltr">#22D3EE · توهّج</div></div></div>
+      <div class="sw"><div class="chip" style="background:#A3E635"></div><div class="meta"><div class="nm">nc-glow</div><div class="hx" dir="ltr">#A3E635 · نواة/توهّج</div></div></div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--t2);margin-top:22px">النصوص</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#F1F5F9"></div><div class="meta"><div class="nm">nc-text1</div><div class="hx" dir="ltr">#F1F5F9 · عناوين</div></div></div>
+      <div class="sw"><div class="chip" style="background:#94A3B8"></div><div class="meta"><div class="nm">nc-text2</div><div class="hx" dir="ltr">#94A3B8 · نص ثانوي</div></div></div>
+      <div class="sw"><div class="chip" style="background:#64748B"></div><div class="meta"><div class="nm">nc-text3</div><div class="hx" dir="ltr">#64748B · تلميحات</div></div></div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--t2);margin-top:22px">ألوان التقييم (Grades) — للتقارير</h3>
+    <div class="grid swatches">
+      <div class="sw"><div class="chip" style="background:#22C55E"></div><div class="meta"><div class="nm">Grade A</div><div class="hx" dir="ltr">#22C55E · ممتاز</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3B82F6"></div><div class="meta"><div class="nm">Grade B</div><div class="hx" dir="ltr">#3B82F6 · جيد</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F59E0B"></div><div class="meta"><div class="nm">Grade C</div><div class="hx" dir="ltr">#F59E0B · تحذير</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EF4444"></div><div class="meta"><div class="nm">Grade D</div><div class="hx" dir="ltr">#EF4444 · خطر</div></div></div>
+    </div>
+  </section>
+
+  <!-- GRADIENT + EFFECTS -->
+  <section>
+    <div class="eyebrow">03 — التدرّج والتأثيرات</div>
+    <h2 class="title">التدرّج <span class="grad">المميِّز</span> والتوهّج</h2>
+    <p class="lead">التدرّج الأخضر→السماوي هو توقيع العلامة. استخدمه للعناوين الكبيرة، الأزرار الأساسية، والعناصر البطلة.</p>
+    <div class="gradbar"></div>
+    <div class="grid two" style="margin-top:16px">
+      <div class="card">
+        <div class="k" style="color:var(--t2);font-size:13px;margin-bottom:6px">التدرّج (CSS)</div>
+        <code>linear-gradient(135deg, #4ADE80 0%, #22D3EE 100%)</code>
+        <div style="margin-top:16px;font-family:'Outfit';font-weight:900;font-size:34px" class="grad">نصّ بالتدرّج</div>
+        <div class="note">نصّ التدرّج: <code>background-clip:text; color:transparent</code></div>
+      </div>
+      <div class="card glow">
+        <div class="k" style="color:var(--t2);font-size:13px;margin-bottom:10px">التوهّج (Glow)</div>
+        <code>0 0 40px rgba(74,222,128,.15),<br>0 0 80px rgba(34,211,238,.08)</code>
+        <div class="note">هالة العنوان البطل (نص):<br><code dir="ltr">text-shadow:0 0 40px rgba(74,222,128,.25), 0 0 80px rgba(34,211,238,.15)</code></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section>
+    <div class="eyebrow">04 — الخطوط</div>
+    <h2 class="title">الخطوط <span class="grad">Typography</span></h2>
+    <p class="lead">خطّان فقط: <b>Outfit</b> للّاتيني والعناوين والأرقام، و<b>Tajawal</b> للعربية. كلاهما من Google Fonts. الأرقام دائماً لاتينية (0-9).</p>
+    <div class="grid two">
+      <div class="card">
+        <span class="tag" dir="ltr">Outfit · 300–900</span>
+        <div class="type-outfit" style="font-weight:900;font-size:40px;letter-spacing:-.02em">Check any phone</div>
+        <div class="type-outfit" style="font-weight:600;font-size:18px;color:var(--t2)">Before you buy — AI diagnostics</div>
+        <div class="wlist" style="margin-top:12px">
+          <span style="font-weight:300">Light 300</span><span style="font-weight:500">Medium 500</span><span style="font-weight:700">Bold 700</span><span style="font-weight:900">Black 900</span>
+        </div>
+        <div class="note">للعناوين: <b>Black/ExtraBold (800–900)</b>، تتبّع حروف ضيّق. للأرقام: <code>tabular-nums</code>.</div>
+      </div>
+      <div class="card">
+        <span class="tag" dir="ltr">Tajawal · 300–900</span>
+        <div class="type-tajawal" style="font-weight:900;font-size:40px">افحص أي هاتف</div>
+        <div class="type-tajawal" style="font-weight:500;font-size:18px;color:var(--t2)">قبل الشراء — تحليل بالذكاء الاصطناعي</div>
+        <div class="wlist" style="margin-top:12px">
+          <span style="font-weight:300">خفيف 300</span><span style="font-weight:500">متوسط 500</span><span style="font-weight:700">عريض 700</span><span style="font-weight:900">أسود 900</span>
+        </div>
+        <div class="note">العربية RTL تستخدم Tajawal أولاً؛ اللاتيني داخلها يبقى Outfit.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUAL MOTIFS -->
+  <section>
+    <div class="eyebrow">05 — العناصر البصرية</div>
+    <h2 class="title">اللغة <span class="grad">البصرية</span></h2>
+    <p class="lead">خلفية داكنة + بقع توهّج ضبابية + جسيمات عائمة + بطاقات بحواف 16–24px وحدود رفيعة جداً + أزرار حبّة (pill) بالتدرّج.</p>
+    <div class="grid two">
+      <div class="card" style="position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(60% 80% at 20% 0%,rgba(74,222,128,.18),transparent 60%),radial-gradient(60% 80% at 100% 100%,rgba(34,211,238,.18),transparent 60%)"></div>
+        <div style="position:relative">
+          <div style="font-weight:700;margin-bottom:14px">أزرار</div>
+          <a class="btn btn-grad" href="#">تنزيل التطبيق (APK)</a>
+          <a class="btn btn-ghost" href="#" style="margin-inline-start:8px">تحقّق من تقرير</a>
+          <div class="note">الزرّ الأساسي = تدرّج على نصّ بلون الخلفية الداكنة. الثانوي = حدّ رفيع.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:14px">شارات التقييم</div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <span class="badge" style="background:#22C55E">A</span>
+          <span class="badge" style="background:#3B82F6">B</span>
+          <span class="badge" style="background:#F59E0B">C</span>
+          <span class="badge" style="background:#EF4444">D</span>
+        </div>
+        <div class="note">دائرة ملوّنة بحرف أبيض (Outfit Black) + حلقة/توهّج خفيف بلون الدرجة.</div>
+      </div>
+    </div>
+    <ul class="clean" style="margin-top:16px">
+      <li><b>الزوايا:</b> بطاقات <code>16–20px</code>، أقسام بطلة <code>24–28px</code>، أزرار <code>12px</code>.</li>
+      <li><b>الحدود:</b> رفيعة جداً <code dir="ltr">rgba(255,255,255,.06)</code> — لا حدود سميكة.</li>
+      <li><b>الأيقونات:</b> Heroicons (outline)، سماكة الخطّ <code>1.8–2</code>، لون أحادي من اللوحة.</li>
+      <li><b>الحركة:</b> ظهور بانزلاق لأعلى ناعم + جسيمات تطفو ببطء (زخرفية فقط).</li>
+    </ul>
+  </section>
+
+  <!-- VOICE -->
+  <section>
+    <div class="eyebrow">06 — الصوت والرسائل</div>
+    <h2 class="title">النبرة <span class="grad">والرسائل</span></h2>
+    <p class="lead">تقنيّة لكن موثوقة: «قياس يمكن الدفاع عنه، لا رقم تسويقي». واضحة للمشتري العادي، ودقيقة للمتخصّص.</p>
+
+    <div class="card" style="margin-bottom:16px">
+      <div style="font-weight:700;margin-bottom:10px">العبارة الرئيسية (Hero) — بثلاث لغات</div>
+      <div class="kv"><span class="k">ar</span><b>افحص أي هاتف قبل الشراء</b></div>
+      <div class="kv"><span class="k" dir="ltr">en</span><b dir="ltr">Check any phone before you buy</b></div>
+      <div class="kv"><span class="k" dir="ltr">tr</span><b dir="ltr">Satın almadan önce her telefonu kontrol edin</b></div>
+      <div class="note">الشعار الختامي: «فحص ذكي بالذكاء الاصطناعي — ثقة كاملة في كل تقرير».</div>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">ركائز القيمة</div>
+        <ul class="clean">
+          <li><b>فحص إجهاد 8 دقائق</b> — يكشف ما لا يظهر بالاستخدام العادي.</li>
+          <li><b>تحليل بالذكاء الاصطناعي</b> — تقرير واضح + تفاصيل تقنية.</li>
+          <li><b>تقرير موثوق</b> — رمز QR للتحقّق، لا تلاعب.</li>
+          <li><b>توقّع المشاكل</b> — أنماط مخاطر مبكرة.</li>
+          <li><b>بنية AI مزدوجة</b> — موثوقية قصوى واحتياطي تلقائي.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">أرقام معتمدة (استخدمها كما هي)</div>
+        <div class="kv"><span class="k">الاختبارات</span><b>100+</b></div>
+        <div class="kv"><span class="k">مدّة الفحص</span><b>8 دقائق</b></div>
+        <div class="kv"><span class="k">قنوات القياس</span><b>11</b></div>
+        <div class="kv"><span class="k">فئات الاختبار</span><b>13</b></div>
+        <div class="kv"><span class="k">مراحل الإجهاد</span><b>8</b></div>
+        <div class="kv"><span class="k">عيّنات/فحص</span><b>~1,600</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AD GUARDRAILS -->
+  <section>
+    <div class="eyebrow">07 — ضوابط الإعلانات</div>
+    <h2 class="title">قواعد <span class="grad">المحتوى الإعلاني</span></h2>
+    <p class="lead">حافظ على الصدق والاتساق — هذه القواعد تحمي العلامة قانونياً وتنافسياً.</p>
+    <div class="grid two">
+      <div class="card do">
+        <h3 style="margin:0 0 10px;font-size:16px">افعل ✓</h3>
+        <ul class="clean">
+          <li>قل «<b>ذكاء اصطناعي متقدّم / بنية مزدوجة</b>».</li>
+          <li>الأرقام المعتمدة: <b>100+ اختبار · 8 دقائق · 11 قناة · 13 فئة</b>.</li>
+          <li>«<b>مُختبَر على أجهزة رائدة ومتوسطة</b>».</li>
+          <li>وجّه للتحقّق: <code dir="ltr">neuralcheck.net/verify</code>.</li>
+          <li>المنصّة: <b>Android (تنزيل APK مباشر)</b>.</li>
+        </ul>
+      </div>
+      <div class="card dont">
+        <h3 style="margin:0 0 10px;font-size:16px">لا تفعل ✕</h3>
+        <ul class="clean">
+          <li>لا تُسمِّ مزوّدي الـ AI (DeepSeek/Gemini) في أي إعلان.</li>
+          <li>لا تستخدم أرقاماً قديمة (120+ / 18 متغيّر / 1000+ جهاز).</li>
+          <li>لا تَعِد بـ «iOS» أو «Google Play قريباً».</li>
+          <li>لا تَعِد بضمان قانوني — التقرير «استرشادي».</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div style="font-weight:700;margin-bottom:8px">الأسعار (للإعلانات الترويجية)</div>
+      <div class="kv"><span class="k">فحص فردي</span><b dir="ltr">$0.50 · فحص واحد · صالح 30 يوماً</b></div>
+      <div class="kv"><span class="k">متجر أساسي</span><b dir="ltr">$10/شهر · 50 فحصاً</b></div>
+      <div class="kv"><span class="k">متجر احترافي</span><b dir="ltr">$20/شهر · 150 فحصاً</b></div>
+      <div class="note">يوجد فحص مجاني واحد لكل جهاز للتجربة.</div>
+    </div>
+  </section>
+
+  <!-- DESIGNER KIT -->
+  <section>
+    <div class="eyebrow">08 — عُدّة سريعة للمصمّم</div>
+    <h2 class="title">Quick <span class="grad">Kit</span></h2>
+    <div class="grid two">
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">انسخ/الصق</div>
+        <div class="kv"><span class="k">خلفية</span><code>#0A0E1A</code></div>
+        <div class="kv"><span class="k">بطاقة</span><code>#111827</code></div>
+        <div class="kv"><span class="k">أخضر</span><code>#4ADE80</code></div>
+        <div class="kv"><span class="k">سماوي</span><code>#38BDF8</code></div>
+        <div class="kv"><span class="k">تدرّج</span><code>135° #4ADE80→#22D3EE</code></div>
+        <div class="kv"><span class="k">عنوان</span><code>Outfit 900</code></div>
+        <div class="kv"><span class="k">عربي</span><code>Tajawal 700/900</code></div>
+        <div class="kv"><span class="k">الشعار</span><code>public/logo.svg</code></div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:8px">عبارات CTA جاهزة</div>
+        <ul class="clean">
+          <li>تنزيل التطبيق (APK)</li>
+          <li>افحص جهازك في 8 دقائق</li>
+          <li>اعرف حالته الحقيقية قبل ما تشتري</li>
+          <li>تقرير موثوق برمز QR</li>
+          <li dir="ltr">Check any phone before you buy</li>
+        </ul>
+        <div class="note">الإيقاع البصري: خلفية داكنة → بقعة توهّج → عنوان بالتدرّج → زرّ حبّة. اترك مساحة سلبية كبيرة.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHT VARIANT -->
+  <section>
+    <div class="eyebrow">09 — النسخة الفاتحة</div>
+    <h2 class="title">الهوية <span class="grad">الفاتحة</span> — للإعلانات على خلفيات فاتحة</h2>
+    <p class="lead">الموقع داكن فقط؛ هذه النسخة الفاتحة <b>للتصاميم الإعلانية والمطبوعات</b> على خلفية بيضاء/فاتحة. نفس الحمض النووي (الأخضر→السماوي، نفس الشعار والخطوط) لكن بألوان <b>مُعمّقة</b> لتبقى مقروءة على الأبيض، والتوهّج يُستبدَل بظلّ ناعم.</p>
+
+    <div class="lightwrap">
+      <!-- logo + gradient -->
+      <div class="grid two" style="gap:18px">
+        <div class="l-card" style="display:flex;gap:18px;align-items:center">
+          <svg viewBox="0 0 200 200" width="116" height="116" role="img" aria-label="NeuralCheck logo — light variant">
+            <defs>
+              <linearGradient id="phoneGradL" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0EA5E9"/><stop offset="100%" stop-color="#0891B2"/></linearGradient>
+              <linearGradient id="neuronGradL" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0891B2"/><stop offset="50%" stop-color="#16A34A"/><stop offset="100%" stop-color="#15803D"/></linearGradient>
+              <linearGradient id="neuronLineL" gradientUnits="userSpaceOnUse" x1="52" y1="52" x2="148" y2="148"><stop offset="0%" stop-color="#0891B2"/><stop offset="50%" stop-color="#16A34A"/><stop offset="100%" stop-color="#15803D"/></linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="22" fill="#16A34A" opacity=".10"/>
+            <rect x="52" y="28" width="96" height="144" rx="16" fill="none" stroke="url(#phoneGradL)" stroke-width="2.5"/>
+            <rect x="82" y="32" width="36" height="4" rx="2" fill="url(#phoneGradL)" opacity=".6"/>
+            <g stroke="url(#neuronLineL)" stroke-width="2" stroke-linecap="round"><line x1="100" y1="100" x2="100" y2="52"/><line x1="100" y1="100" x2="142" y2="62"/><line x1="100" y1="100" x2="148" y2="100"/><line x1="100" y1="100" x2="142" y2="138"/><line x1="100" y1="100" x2="100" y2="152"/><line x1="100" y1="100" x2="58" y2="138"/><line x1="100" y1="100" x2="52" y2="100"/><line x1="100" y1="100" x2="58" y2="62"/></g>
+            <g fill="url(#neuronGradL)"><circle cx="100" cy="52" r="5"/><circle cx="142" cy="62" r="5"/><circle cx="148" cy="100" r="5"/><circle cx="142" cy="138" r="5"/><circle cx="100" cy="152" r="4.5"/><circle cx="58" cy="138" r="5"/><circle cx="52" cy="100" r="5"/><circle cx="58" cy="62" r="5"/></g>
+            <circle cx="100" cy="100" r="9" fill="#16A34A"/><circle cx="100" cy="100" r="3.5" fill="#fff"/>
+          </svg>
+          <div>
+            <div style="font-family:'Outfit';font-weight:900;font-size:24px" class="l-grad-text">NeuralCheck</div>
+            <div class="l-sub" style="font-size:14px">الشعار — نسخة الخلفية الفاتحة (تدرّجات مُعمّقة + نواة خضراء صلبة بدل التوهّج).</div>
+          </div>
+        </div>
+        <div class="l-card">
+          <div class="l-sub" style="font-size:13px;margin-bottom:8px">التدرّج على الفاتح</div>
+          <div class="l-gradbar"></div>
+          <div class="l-grad-text" style="font-family:'Outfit';font-weight:900;font-size:30px;margin-top:12px">نصّ بالتدرّج</div>
+          <div class="l-sub" style="font-size:12px;margin-top:4px">تعبئة الأزرار: <code dir="ltr">135° #16A34A→#0891B2</code>. نصّ التدرّج يستخدم درجات أعمق <code dir="ltr">#15803D→#0E7490</code>.</div>
+        </div>
+      </div>
+
+      <!-- palette -->
+      <h3 style="font-size:15px;margin:22px 0 8px">الخلفيات الفاتحة</h3>
+      <div class="grid swatches">
+        <div class="l-sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #E2E8F0"></div><div class="meta"><div class="nm">Base / Card</div><div class="hx" dir="ltr">#FFFFFF</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#F8FAFC"></div><div class="meta"><div class="nm">Page</div><div class="hx" dir="ltr">#F8FAFC</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#F1F5F9"></div><div class="meta"><div class="nm">Surface</div><div class="hx" dir="ltr">#F1F5F9</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#E2E8F0"></div><div class="meta"><div class="nm">Border</div><div class="hx" dir="ltr">#E2E8F0</div></div></div>
+      </div>
+
+      <h3 style="font-size:15px;margin:18px 0 8px">ألوان العلامة على الفاتح (مُعمّقة)</h3>
+      <div class="grid swatches">
+        <div class="l-sw"><div class="chip" style="background:#16A34A"></div><div class="meta"><div class="nm">Green</div><div class="hx" dir="ltr">#16A34A · أساسي</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#0891B2"></div><div class="meta"><div class="nm">Cyan</div><div class="hx" dir="ltr">#0891B2 · أساسي</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#15803D"></div><div class="meta"><div class="nm">Green (نصّ)</div><div class="hx" dir="ltr">#15803D</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#0E7490"></div><div class="meta"><div class="nm">Cyan (نصّ)</div><div class="hx" dir="ltr">#0E7490</div></div></div>
+      </div>
+
+      <h3 style="font-size:15px;margin:18px 0 8px">النصوص + التقييم</h3>
+      <div class="grid swatches">
+        <div class="l-sw"><div class="chip" style="background:#0F172A"></div><div class="meta"><div class="nm">عناوين</div><div class="hx" dir="ltr">#0F172A</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#334155"></div><div class="meta"><div class="nm">نصّ</div><div class="hx" dir="ltr">#334155</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:#64748B"></div><div class="meta"><div class="nm">تلميحات</div><div class="hx" dir="ltr">#64748B</div></div></div>
+        <div class="l-sw"><div class="chip" style="background:linear-gradient(90deg,#16A34A 0 25%,#2563EB 25% 50%,#B45309 50% 75%,#DC2626 75%)"></div><div class="meta"><div class="nm">A · B · C · D</div><div class="hx" dir="ltr">16A34A/2563EB/B45309/DC2626</div></div></div>
+      </div>
+
+      <!-- components -->
+      <div class="grid two" style="margin-top:18px">
+        <div class="l-card">
+          <div style="font-weight:700;margin-bottom:12px">أزرار</div>
+          <a class="l-btn l-btn-grad" href="#">تنزيل التطبيق</a>
+          <a class="l-btn l-btn-ghost" href="#" style="margin-inline-start:8px">تحقّق من تقرير</a>
+          <div class="l-sub" style="font-size:12px;margin-top:10px">الأساسي: تعبئة بالتدرّج + <b>نصّ أبيض</b>. الثانوي: حدّ <code dir="ltr">#CBD5E1</code>.</div>
+        </div>
+        <div class="l-card">
+          <div style="font-weight:700;margin-bottom:12px">شارات التقييم</div>
+          <div style="display:flex;gap:12px">
+            <span class="l-badge" style="background:#16A34A">A</span>
+            <span class="l-badge" style="background:#2563EB">B</span>
+            <span class="l-badge" style="background:#B45309">C</span>
+            <span class="l-badge" style="background:#DC2626">D</span>
+          </div>
+          <div class="l-sub" style="font-size:12px;margin-top:10px">درجات مُعمّقة قليلاً عن النسخة الداكنة ليمرّ النصّ الأبيض فوقها.</div>
+        </div>
+      </div>
+
+      <!-- do / dont -->
+      <div class="grid two" style="margin-top:18px">
+        <div class="l-card l-do">
+          <h3 style="margin:0 0 8px;font-size:15px">افعل ✓</h3>
+          <ul class="clean">
+            <li>أخضر <b>#16A34A</b> / سماوي <b>#0891B2</b> للأيقونات والعناصر.</li>
+            <li>نصّ <b>أبيض</b> فوق تعبئة التدرّج.</li>
+            <li>توهّج → ظلّ ناعم <code dir="ltr">0 8px 24px rgba(15,23,42,.06)</code>.</li>
+            <li>عناوين <b>#0F172A</b>، نصّ <b>#334155</b>.</li>
+          </ul>
+        </div>
+        <div class="l-card l-dont">
+          <h3 style="margin:0 0 8px;font-size:15px">تجنّب ✕</h3>
+          <ul class="clean">
+            <li>النيون الفاتح <b dir="ltr">#4ADE80/#38BDF8</b> كنصّ على الأبيض (تباين ضعيف).</li>
+            <li>نصّ التدرّج الفاتح الأصلي على الأبيض — غير مقروء.</li>
+            <li>نسخ التوهّج الداكن كما هو — لا يظهر على الفاتح.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="l-sub" style="font-size:12px;margin-top:14px">⚠️ هذه النسخة داخل دليل الهوية فقط — الموقع لم يُمَسّ ويبقى داكناً.</p>
+    </div>
+  </section>
+
+  <hr class="divider" style="margin-top:56px">
+  <p class="note" style="text-align:center;margin-top:20px">NeuralCheck · الهوية البصرية · neuralcheck.net — استُخرجت القيم من كود الموقع الفعلي.</p>
+
+</div>
+</body>
+</html>

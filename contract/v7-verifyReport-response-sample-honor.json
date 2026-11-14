@@ -1,0 +1,287 @@
+{
+  "scanId": "8fa88e6c-8a7b-43f4-9664-5c4a86c5fa29",
+  "shortId": "NC-VGRSUN",
+  "deviceModel": "Unknown",
+  "deviceMarketingName": "Unknown",
+  "date": {
+    "__marker": "FIRESTORE_SERVER_TIMESTAMP"
+  },
+  "language": "ar",
+  "isFreeTrial": false,
+  "verified": true,
+  "aiResponse": {
+    "pipeline": "v7_findings_based",
+    "language": "ar",
+    "letter": null,
+    "letterSource": "HARNESS_ERROR",
+    "coverage": null,
+    "coveragePct": null,
+    "partialAssessment": false,
+    "partialAssessmentTag": null,
+    "governingGateReason": null,
+    "noDataAtAll": false,
+    "zeroMeasuredMessage": null,
+    "abstentionReasons": null,
+    "harnessError": true,
+    "harnessErrorReason": "FUNCTIONAL_RESULTS_UNAVAILABLE",
+    "harnessErrorMessage": "تعذّر تجهيز نتائج الاختبارات لهذا الفحص، وهذا ليس حكماً على الجهاز.",
+    "categories": {
+      "battery": {
+        "state": "PARTIAL",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0.25,
+        "reason": "NO_CALIBRATED_THRESHOLD (PLAN-03 لم يُنجَز — انظر batteryLayer.js)",
+        "letterCeilingReason": null,
+        "testIds": [],
+        "confidence": null,
+        "tag": "ESTIMATED",
+        "indicators": {
+          "BAT-THERMAL-EFF": {
+            "id": "BAT-THERMAL-EFF",
+            "status": "ABSTAINED",
+            "reason": "INSUFFICIENT_CADENCE",
+            "verdict": null,
+            "gate": {
+              "cadenceWhole": 3,
+              "required": 5,
+              "passes": false
+            },
+            "socAtWindowStart": 75,
+            "socAtWindowEnd": 72
+          },
+          "BAT-R-APPARENT": {
+            "id": "BAT-R-APPARENT",
+            "status": "ABSTAINED",
+            "reason": "INSUFFICIENT_CADENCE",
+            "verdict": null,
+            "gate": {
+              "nSamples": 835,
+              "sourceCadenceUpdates": 1,
+              "required": 5,
+              "passes": false
+            },
+            "socAtWindowStart": 74,
+            "socAtWindowEnd": 73
+          },
+          "BAT-FCC": {
+            "id": "BAT-FCC",
+            "status": "ABSTAINED",
+            "reason": "INSUFFICIENT_SAMPLES",
+            "verdict": null,
+            "gate": {
+              "intervalCount": 1,
+              "required": 2,
+              "passes": false
+            },
+            "socAtWindowStart": 74,
+            "socAtWindowEnd": 73
+          },
+          "BAT-COULOMB": {
+            "id": "BAT-COULOMB",
+            "status": "MEASURED",
+            "verdict": "THRESHOLD_NOT_CALIBRATED",
+            "value": 93.22845194444444,
+            "unit": "mAh",
+            "gate": {
+              "qIntMah": 93.22845194444444,
+              "required": 80,
+              "passes": true
+            },
+            "consistencyGateNote": "بوّابة الاتّساق المنصوصة (k = ΔCC ÷ ∫I) تحتاج charge_counter (fv68) وغير قابلة للتقييم على fv67 — لم تُستبدَل بتخمين؛ الحقل consistencyK يبقى null.",
+            "consistencyK": null,
+            "socAtWindowStart": 75,
+            "socAtWindowEnd": 72
+          }
+        },
+        "socAtStart": 75,
+        "socAtEnd": 72
+      },
+      "thermal": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "cpu": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "gpu": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "display": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "memory": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "storage": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "camera": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "gps": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "security": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "sensors": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "cellular": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "wireless": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "audio": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "input": {
+        "state": "HARNESS_ERROR",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": []
+      }
+    },
+    "issues": [
+      {
+        "id": "DISC-HARNESS_ERROR",
+        "category": null,
+        "severity": "INFO",
+        "title": "تعذّر تجهيز نتائج الاختبارات الوظيفية لهذا الفحص.",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      }
+    ],
+    "narrative": {
+      "summary": null,
+      "buyerAdvice": {
+        "casual": null,
+        "gamer": null,
+        "photographer": null
+      }
+    },
+    "narrativeIncomplete": true,
+    "narrativeIncompleteFields": [
+      "narrative.summary",
+      "narrative.details",
+      "narrative.verdict",
+      "narrative.buyerAdvice.casual",
+      "narrative.buyerAdvice.gamer",
+      "narrative.buyerAdvice.photographer",
+      "narrative.issueDescriptions"
+    ]
+  }
+}

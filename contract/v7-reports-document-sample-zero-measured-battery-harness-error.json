@@ -1,0 +1,911 @@
+{
+  "userId": {
+    "__marker": "NOT_FROM_FIRESTORE_OR_AUTH_USERID"
+  },
+  "deviceFingerprint": "Unknown",
+  "deviceModel": "Unknown",
+  "deviceMarketingName": "Unknown",
+  "fieldsVersion": 67,
+  "appVersion": "1.0.8-v6beta",
+  "evaluationRulesVersion": "rules-2026-10-23-hardware-absent-coverage",
+  "aiResponse": {
+    "pipeline": "v7_findings_based",
+    "language": "ar",
+    "overall": {
+      "letter": null,
+      "letterSource": "NO_DATA",
+      "coverage": 0,
+      "coveragePct": 0,
+      "partialAssessment": true,
+      "partialAssessmentTag": {
+        "label": "تقييم جزئي",
+        "coveragePct": 0,
+        "text": "تقييم جزئي — تغطية 0%"
+      },
+      "governingGateReason": null,
+      "noDataAtAll": true,
+      "zeroMeasuredMessage": "لم يُقَس شيء قابل للحكم",
+      "abstentionReasons": [
+        {
+          "category": "battery",
+          "reason": "HARNESS_ERROR"
+        },
+        {
+          "category": "thermal",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "cpu",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "gpu",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "display",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "memory",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "storage",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "camera",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "gps",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "security",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "sensors",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "cellular",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "wireless",
+          "reason": "DECLARED_BUT_NONE_EXECUTED"
+        },
+        {
+          "category": "audio",
+          "reason": "NO_HEALTH_BEARING_TESTS_DECLARED"
+        },
+        {
+          "category": "input",
+          "reason": "NO_HEALTH_BEARING_TESTS_DECLARED"
+        }
+      ],
+      "harnessError": false,
+      "harnessErrorReason": null,
+      "harnessErrorMessage": null
+    },
+    "categories": {
+      "battery": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "HARNESS_ERROR",
+        "letterCeilingReason": null,
+        "testIds": [],
+        "confidence": null,
+        "tag": null,
+        "indicators": null,
+        "socAtStart": 43,
+        "socAtEnd": 38
+      },
+      "thermal": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "T-01",
+          "T-02",
+          "T-03",
+          "T-04"
+        ]
+      },
+      "cpu": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "C-01",
+          "C-02",
+          "C-03",
+          "C-04",
+          "C-05",
+          "C-06",
+          "C-07"
+        ]
+      },
+      "gpu": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "G-01",
+          "G-02",
+          "G-03",
+          "G-04",
+          "G-05"
+        ]
+      },
+      "display": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "D-01",
+          "D-02",
+          "D-03"
+        ]
+      },
+      "memory": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "R-01",
+          "R-02",
+          "R-03"
+        ]
+      },
+      "storage": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "S-01",
+          "S-02",
+          "S-03",
+          "S-04",
+          "S-05",
+          "S-06"
+        ]
+      },
+      "camera": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "CM-01",
+          "CM-02",
+          "CM-03",
+          "CM-04",
+          "CM-05",
+          "CM-06",
+          "CM-07",
+          "CM-08",
+          "CM-10",
+          "CM-11"
+        ]
+      },
+      "gps": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "L-01",
+          "L-02",
+          "L-03"
+        ]
+      },
+      "security": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "SEC-01",
+          "SEC-02",
+          "SEC-03",
+          "SEC-04",
+          "SEC-05",
+          "SEC-06",
+          "SEC-07",
+          "SEC-08",
+          "SEC-09",
+          "SEC-10",
+          "SEC-11"
+        ]
+      },
+      "sensors": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "SN-01",
+          "SN-02",
+          "SN-03",
+          "SN-04",
+          "SN-05",
+          "SN-06",
+          "SN-07",
+          "SN-08",
+          "SN-09",
+          "SN-10",
+          "SN-11",
+          "SN-12"
+        ]
+      },
+      "cellular": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "N-01",
+          "N-02",
+          "N-03",
+          "N-04",
+          "N-05",
+          "N-06",
+          "N-07"
+        ]
+      },
+      "wireless": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "DECLARED_BUT_NONE_EXECUTED",
+        "letterCeilingReason": null,
+        "testIds": [
+          "N-08",
+          "N-09",
+          "N-10",
+          "N-11",
+          "N-12",
+          "N-13"
+        ]
+      },
+      "audio": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "NO_HEALTH_BEARING_TESTS_DECLARED",
+        "letterCeilingReason": null,
+        "testIds": []
+      },
+      "input": {
+        "state": "UNMEASURED",
+        "letter": null,
+        "letterSource": "DETERMINISTIC",
+        "adjustmentReason": null,
+        "adjustmentEvidence": null,
+        "coverage": 0,
+        "reason": "NO_HEALTH_BEARING_TESTS_DECLARED",
+        "letterCeilingReason": null,
+        "testIds": []
+      }
+    },
+    "issues": [
+      {
+        "id": "DISC-T-03",
+        "category": "thermal",
+        "severity": "INFO",
+        "title": "غير مقيس — الحرارة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-C-01",
+        "category": "cpu",
+        "severity": "INFO",
+        "title": "غير مقيس — المعالج",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-C-02",
+        "category": "cpu",
+        "severity": "INFO",
+        "title": "غير مقيس — المعالج",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-C-05",
+        "category": "cpu",
+        "severity": "INFO",
+        "title": "غير مقيس — المعالج",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-C-06",
+        "category": "cpu",
+        "severity": "INFO",
+        "title": "غير مقيس — المعالج",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-G-01",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-G-02",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-G-03",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-G-04",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-G-05",
+        "category": "gpu",
+        "severity": "INFO",
+        "title": "غير مقيس — معالج الرسومات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-D-01",
+        "category": "display",
+        "severity": "INFO",
+        "title": "غير مقيس — الشاشة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-D-02",
+        "category": "display",
+        "severity": "INFO",
+        "title": "غير مقيس — الشاشة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-D-03",
+        "category": "display",
+        "severity": "INFO",
+        "title": "غير مقيس — الشاشة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-R-01",
+        "category": "memory",
+        "severity": "INFO",
+        "title": "غير مقيس — الذاكرة",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-S-01",
+        "category": "storage",
+        "severity": "INFO",
+        "title": "غير مقيس — التخزين",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-S-03",
+        "category": "storage",
+        "severity": "INFO",
+        "title": "غير مقيس — التخزين",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-01",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-02",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-03",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-04",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-05",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-06",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-07",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-CM-10",
+        "category": "camera",
+        "severity": "INFO",
+        "title": "غير مقيس — الكاميرا",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-L-02",
+        "category": "gps",
+        "severity": "INFO",
+        "title": "غير مقيس — الموقع (GPS)",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-L-03",
+        "category": "gps",
+        "severity": "INFO",
+        "title": "غير مقيس — الموقع (GPS)",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-02",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-03",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-04",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-09",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-10",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SEC-11",
+        "category": "security",
+        "severity": "INFO",
+        "title": "غير مقيس — الأمان",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-01",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-02",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-03",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-04",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-05",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-06",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-07",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-08",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-09",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-10",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-11",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-SN-12",
+        "category": "sensors",
+        "severity": "INFO",
+        "title": "غير مقيس — المستشعرات",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-01",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-02",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-03",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-04",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-05",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-06",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-07",
+        "category": "cellular",
+        "severity": "INFO",
+        "title": "غير مقيس — الشبكة الخلوية",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-08",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-09",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-10",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-11",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-12",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      },
+      {
+        "id": "DISC-N-13",
+        "category": "wireless",
+        "severity": "INFO",
+        "title": "غير مقيس — الاتصال اللاسلكي",
+        "evidence": null,
+        "evidenceUnit": null,
+        "description": null
+      }
+    ],
+    "narrative": {
+      "summary": null,
+      "details": null,
+      "verdict": null,
+      "buyerAdvice": {
+        "casual": null,
+        "gamer": null,
+        "photographer": null
+      }
+    },
+    "narrativeIncomplete": true,
+    "narrativeIncompleteFields": [
+      "narrative.summary",
+      "narrative.details",
+      "narrative.verdict",
+      "narrative.buyerAdvice.casual",
+      "narrative.buyerAdvice.gamer",
+      "narrative.buyerAdvice.photographer",
+      "narrative.issueDescriptions"
+    ]
+  },
+  "aiModel": null,
+  "aiDurationMs": 0,
+  "aiFallbackReason": null,
+  "language": "ar",
+  "shortId": "NC-C9QM3U",
+  "scoringEngine": "v3-ai-graded",
+  "isFreeTrial": false,
+  "pipeline": "v7_findings_based",
+  "v5Metrics": {
+    "bodyBuildMs": null,
+    "cacheHit": false,
+    "cacheReason": "first_scan",
+    "v7GuardOk": false
+  },
+  "analyzedAt": 1790208000000,
+  "serverSamplesStoragePath": "serverSamples/85ca0ceb-e142-4be4-aaf6-c929037538a5.json.gz",
+  "serverSamplesSaved": false,
+  "createdAt": {
+    "__marker": "FIRESTORE_SERVER_TIMESTAMP"
+  }
+}

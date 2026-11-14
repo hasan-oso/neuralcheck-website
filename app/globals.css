@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #0A0E1A;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: #0A0E1A;
+  color: #F1F5F9;
+  font-family: 'Outfit', 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html[dir='rtl'] body {
+  font-family: 'Tajawal', 'Outfit', ui-sans-serif, system-ui, sans-serif;
+}
+
+.nc-gradient-text {
+  background: linear-gradient(135deg, #4ADE80 0%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.nc-gradient-bg {
+  background: linear-gradient(135deg, #4ADE80 0%, #22D3EE 100%);
+}
+
+.nc-glow {
+  box-shadow: 0 0 40px rgba(74, 222, 128, 0.15),
+              0 0 80px rgba(34, 211, 238, 0.08);
+}
+
+.nc-hero-title-glow {
+  text-shadow: 0 0 40px rgba(74, 222, 128, 0.25),
+               0 0 80px rgba(34, 211, 238, 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0E1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A2235;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22D3EE;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #F1F5F9 !important;
+  -webkit-box-shadow: 0 0 0 1000px #111827 inset !important;
+  caret-color: #F1F5F9 !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #4ADE80 0%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Floating particles */
+@keyframes nc-float {
+  0% { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  15% { opacity: 0.7; }
+  50% { opacity: 1; transform: translate3d(10px, -40px, 0) scale(1.1); }
+  85% { opacity: 0.4; }
+  100% { transform: translate3d(-10px, -90px, 0) scale(0.5); opacity: 0; }
+}
+.nc-float {
+  animation: nc-float linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Fade + slide up for hero/on-load */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Soft shimmer for loading skeletons */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.nc-shimmer {
+  background: linear-gradient(90deg, #111827 0%, #1A2235 50%, #111827 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Reveal base (uses Reveal.js component) */
+.nc-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nc-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sequential glow pulse for how-it-works step numbers */
+@keyframes step-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(74, 222, 128, 0); border-color: rgba(74, 222, 128, 0.4); }
+  50%      { box-shadow: 0 0 30px rgba(74, 222, 128, 0.6); border-color: rgba(74, 222, 128, 0.9); }
+}
+.nc-step-pulse {
+  animation: step-glow 2.4s ease-in-out infinite;
+}
+
+/* Grade badge glow */
+.nc-grade-glow-A { box-shadow: 0 0 40px rgba(34, 197, 94, 0.45); }
+.nc-grade-glow-B { box-shadow: 0 0 40px rgba(59, 130, 246, 0.45); }
+.nc-grade-glow-C { box-shadow: 0 0 40px rgba(245, 158, 11, 0.45); }
+.nc-grade-glow-D { box-shadow: 0 0 40px rgba(239, 68, 68, 0.45); }
+
+/* Pricing popular ring */
+.nc-popular-ring {
+  box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.5),
+              0 0 60px rgba(74, 222, 128, 0.15),
+              0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Reduce motion for users that prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+  .nc-float { display: none; }
+}
+
+/* ---------- Number rendering — RTL/LTR isolation ---------- */
+/* Some Chromium builds (notably the stripped-down Sparticuz Chromium used
+ * for headless PDF) corrupt mixed-script number runs even when dir="ltr"
+ * is set: leading digits vanish, "70 / 100" renders as "0 / 00", "85%"
+ * collapses to "%". `unicode-bidi: isolate` creates a hard boundary that
+ * the bidi algorithm cannot cross — this fixes those rendering bugs.
+ * Use this class on any element containing a number that lives inside
+ * an RTL paragraph.
+ */
+.num-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* ---------- Bidi isolation — mixed Arabic + English prose ---------- */
+/* Report paragraphs frequently mix Arabic prose with LTR device marketing
+ * names ("Samsung Galaxy S10 5G"), processor codenames ("Exynos 9820"),
+ * and unit symbols ("1564 MB/s"). Without explicit isolation the UBA can
+ * reorder the LTR runs into RTL paragraph flow ("G5 10S Galaxy Samsung").
+ * `unicode-bidi: isolate` makes each container its own bidi paragraph so
+ * LTR runs keep their internal word order while still flowing inside the
+ * surrounding RTL text. Apply to every report text container that may
+ * mix scripts.
+ */
+.report-prose {
+  unicode-bidi: isolate;
+}
+
+/* ---------- Print / PDF styles (V2 #50 + #51 + #52) ---------- */
+/* The PDF is generated by Puppeteer printing /print/{shortId} via Chrome.
+ * We deliberately keep the dark NeuralCheck brand identity in print —
+ * the report is a premium document, not a tax form. We just:
+ *   - force background printing on (Chrome respects this header anyway)
+ *   - drop decorative glows/animations that print poorly
+ *   - guarantee numbers and gradient text are visible
+ */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .nc-glow,
+  .nc-hero-title-glow {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .nc-float { display: none !important; }
+  /* Slightly tighter spacing in print so each section fits a page nicely. */
+  .print-shell { padding: 0 !important; }
+
+  /* `background-clip: text` + `color: transparent` is fragile in headless
+   * Chromium — gradients sometimes resolve to a transparent fill and the
+   * glyph disappears. In print we substitute a solid brand-green so the
+   * digits/text are guaranteed to be readable.
+   */
+  .nc-gradient-text {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #4ADE80 !important;
+    color: #4ADE80 !important;
+  }
+
+  /* Belt-and-suspenders: any element with tabular numbers gets explicit
+   * LTR isolation in print, even if the JSX forgot the .num-ltr class.
+   */
+  .tabular-nums {
+    direction: ltr !important;
+    unicode-bidi: isolate !important;
+  }
+}

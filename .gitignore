@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+.DS_Store
+*.log
+.vercel
+.firebase
+firebase-debug.log
+.idea/
+.vscode/
+
+# === Added Phase 1.13-prep ===
+.claude/
+*.tsbuildinfo
+next-env.d.ts
+
+# === Extra safety for the public release ===
+*.pem
+*.p12
+public/download/*.apk
+docs/deploy-log/
